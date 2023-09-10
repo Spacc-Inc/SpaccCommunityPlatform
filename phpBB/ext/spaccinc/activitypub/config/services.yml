@@ -1,7 +1,0 @@
-services:
-    spaccinc.activitypub.controller.activitypub:
-        class: spaccinc\activitypub\controller\activitypub_controller
-        arguments:
-            - '@request'
-            - '@dbal.conn'
-

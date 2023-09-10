@@ -1,16 +1,14 @@
 <?php
 
-namespace spaccinc\activitypub\controller;
+namespace spaccincphpbb\activitypub\controller;
 
 use ErrorException;
 use Symfony\Component\HttpFoundation\Response;
 
 class activitypub_controller
 {
-	/** @var \phpbb\request\request */
+	protected $config;
 	protected $request;
-
-	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
 	// Quick way to force any PHP warning to be an error that halts execution and makes nothing return,
@@ -24,9 +22,11 @@ class activitypub_controller
 	}
 
 	public function __construct(
+		\phpbb\config\config              $config,
 		\phpbb\request\request            $request,
 		\phpbb\db\driver\driver_interface $db,
 	){
+		$this->config  = $config;
 		$this->request = $request;
 		$this->db      = $db;
 
@@ -45,19 +45,6 @@ class activitypub_controller
 		$this->server_addr = ((!empty($this->request->server('HTTPS')) && (strtolower($this->request->server('HTTPS')) == 'on' || $this->request->server('HTTPS') == '1')) ? 'https://' : 'http://') . $this->server_name;
 	}
 
-	//private function server_name()
-	//{
-	//	// <https://area51.phpbb.com/docs/dev/3.3.x/request/request.html#server>
-	//	//return strtolower(htmlspecialchars_decode($this->request->header('Host', $this->request->server('SERVER_NAME'))));
-	//}
-
-	//private function server_addr()
-	//{
-	//	// <https://stackoverflow.com/a/56373183>
-	//	$proto = (!empty($this->request->server('HTTPS')) && (strtolower($this->request->server('HTTPS')) == 'on' || $this->request->server('HTTPS') == '1')) ? 'https://' : 'http://';
-	//	return $proto . $this->server_name;
-	//}
-
 	private function get_sql_row($sql)
 	{
 		$result = $this->db->sql_query($sql);
@@ -68,6 +55,10 @@ class activitypub_controller
 
 	public function nodeinfo_known()
 	{
+		if (!$this->config['spaccincphpbb_activitypub_setfederation']) {
+			return;
+		}
+
 		set_error_handler([$this, 'exception_error_handler']);
 		$server_addr = $this->server_addr;
 		$response = new Response(json_encode([
@@ -83,6 +74,10 @@ class activitypub_controller
 
 	public function webfinger()
 	{
+		if (!$this->config['spaccincphpbb_activitypub_setfederation']) {
+			return;
+		}
+
 		set_error_handler([$this, 'exception_error_handler']);
 		$server_name = $this->server_name;
 		$server_addr = $this->server_addr;
@@ -135,6 +130,10 @@ class activitypub_controller
 
 	public function activitypub()
 	{
+		if (!$this->config['spaccincphpbb_activitypub_setfederation']) {
+			return;
+		}
+
 		set_error_handler([$this, 'exception_error_handler']);
 		$server_addr = $this->server_addr;
 		$uri_id = htmlspecialchars_decode($server_addr . $this->request->server('REQUEST_URI'));
@@ -157,7 +156,7 @@ class activitypub_controller
 							'version' => '2.0',
 							'software' => [
 								'name' => 'phpBB ActivityPub',
-								'version' => '0.0.1',
+								'version' => '0.0.1-dev',
 							],
 							'protocols' => [
 								'activitypub',

@@ -1,0 +1,17 @@
+services:
+    spaccincphpbb.activitypub.controller.activitypub:
+        class: spaccincphpbb\activitypub\controller\activitypub_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@dbal.conn'
+
+    spaccincphpbb.activitypub.controller.acp:
+        class: spaccincphpbb\activitypub\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'

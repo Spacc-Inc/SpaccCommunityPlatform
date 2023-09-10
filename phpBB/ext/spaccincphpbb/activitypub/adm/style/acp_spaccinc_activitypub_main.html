@@ -1,0 +1,34 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_SPACCINC_ACTIVITYPUB_TITLE') }}</h1>
+
+{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+<form id="spaccincphpbb_activitypub_acp" name="spaccincphpbb_activitypub_acp" method="post" action="{{ U_ACTION }}">
+
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="spaccincphpbb_activitypub_setfederation">{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETFEDERATION') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="spaccincphpbb_activitypub_setfederation" value="1"{% if SPACCINCPHPBB_ACTIVITYPUB_SETFEDERATION %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="spaccincphpbb_activitypub_setfederation" value="0"{% if not SPACCINCPHPBB_ACTIVITYPUB_SETFEDERATION %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<!--<dl>
+			<dt><label for="spaccincphpbb_activitypub_setdomain">{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETDOMAIN') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETDOMAIN_INFO') }}</span></dt>
+			<dd><input name="spaccincphpbb_activitypub_setdomain" type="text" placeholder="TODO" value="TODO" disabled="TODO" /></dd>
+		</dl>-->
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+
+</form>
+
+{% include 'overall_footer.html' %}

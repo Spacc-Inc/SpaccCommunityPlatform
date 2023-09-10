@@ -1,10 +1,10 @@
 {
-	"name": "spaccinc/activitypub",
+	"name": "spaccincphpbb/activitypub",
 	"type": "phpbb-extension",
 	"description": "ActivityPub for phpBB",
 	"homepage": "https://gitlab.com/SpaccInc/SpaccCommunityPlatform",
-	"version": "0.0.1-dev",
-	"time": "2023-09-07",
+	"version": "0.0.2-dev",
+	"time": "2023-09-09",
 	"license": "[to be defined]",
 	"authors": [
 		{
