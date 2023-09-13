@@ -6,7 +6,7 @@ class install_acp_module extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
-		return isset($this->config['spaccincphpbb_activitypub_setfederation']);
+		return isset($this->config['spaccinc_activitypub_setfederation']);
 	}
 
 	public static function depends_on()
@@ -17,7 +17,8 @@ class install_acp_module extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return [
-			['config.add', ['spaccincphpbb_activitypub_setfederation', 0]],
+			['config.add', ['spaccinc_activitypub_setfederation', 0]],
+			['config.add', ['spaccinc_activitypub_setdomain', '']],
 
 			['module.add', [
 				'acp',

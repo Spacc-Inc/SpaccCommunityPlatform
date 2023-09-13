@@ -43,7 +43,8 @@ class acp_controller
 
 			if (empty($errors))
 			{
-				$this->config->set('spaccincphpbb_activitypub_setfederation', $this->request->variable('spaccincphpbb_activitypub_setfederation', 0));
+				$this->config->set('spaccinc_activitypub_setfederation', $this->request->variable('spaccinc_activitypub_setfederation', 0));
+				//$this->config->set('spaccinc_activitypub_setfederation', $this->request->variable('spaccinc_activitypub_setdomain', ''));
 				$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_ACP_SPACCINC_ACTIVITYPUB_SETTINGS');
 				trigger_error($this->language->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
 			}
@@ -53,9 +54,11 @@ class acp_controller
 
 		$this->template->assign_vars([
 			'S_ERROR'   => $s_errors,
-			'ERROR_MSG' => $s_errors ? implode('<br />', $errors) : '',
+			'ERROR_MSG' => ($s_errors ? implode('<br />', $errors) : ''),
 			'U_ACTION'  => $this->u_action,
-			'SPACCINCPHPBB_ACTIVITYPUB_SETFEDERATION' => (bool)$this->config['spaccincphpbb_activitypub_setfederation'],
+			'SYS_SERVER_NAME' => $this->config['server_name'],
+			'SPACCINC_ACTIVITYPUB_SETFEDERATION' => (bool)$this->config['spaccinc_activitypub_setfederation'],
+			'SPACCINC_ACTIVITYPUB_SETDOMAIN'     =>       $this->config['spaccinc_activitypub_setdomain'],
 		]);
 	}
 

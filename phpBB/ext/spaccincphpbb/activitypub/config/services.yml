@@ -3,8 +3,8 @@ services:
         class: spaccincphpbb\activitypub\controller\activitypub_controller
         arguments:
             - '@config'
-            - '@request'
             - '@dbal.conn'
+            - '@request'
 
     spaccincphpbb.activitypub.controller.acp:
         class: spaccincphpbb\activitypub\controller\acp_controller

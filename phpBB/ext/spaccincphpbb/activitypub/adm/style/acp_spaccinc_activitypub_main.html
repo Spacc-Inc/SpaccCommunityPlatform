@@ -14,14 +14,16 @@
 	<fieldset>
 		<legend>{{ lang('SETTINGS') }}</legend>
 		<dl>
-			<dt><label for="spaccincphpbb_activitypub_setfederation">{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETFEDERATION') ~ lang('COLON') }}</label></dt>
-			<dd><label><input type="radio" class="radio" name="spaccincphpbb_activitypub_setfederation" value="1"{% if SPACCINCPHPBB_ACTIVITYPUB_SETFEDERATION %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="spaccincphpbb_activitypub_setfederation" value="0"{% if not SPACCINCPHPBB_ACTIVITYPUB_SETFEDERATION %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+			<dt><label for="spaccinc_activitypub_setfederation">{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETFEDERATION') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="spaccinc_activitypub_setfederation" value="1" {% if SPACCINC_ACTIVITYPUB_SETFEDERATION %} checked="checked" {% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="spaccinc_activitypub_setfederation" value="0" {% if not SPACCINC_ACTIVITYPUB_SETFEDERATION %} checked="checked" {% endif %} /> {{ lang('NO') }}</label></dd>
 		</dl>
-		<!--<dl>
-			<dt><label for="spaccincphpbb_activitypub_setdomain">{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETDOMAIN') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETDOMAIN_INFO') }}</span></dt>
-			<dd><input name="spaccincphpbb_activitypub_setdomain" type="text" placeholder="TODO" value="TODO" disabled="TODO" /></dd>
-		</dl>-->
+		<!--
+		<dl>
+			<dt><label for="spaccinc_activitypub_setdomain">{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETDOMAIN') ~ lang('COLON') }}</label><br /><span>{{ lang('ACP_SPACCINC_ACTIVITYPUB_SETDOMAIN_INFO') }}</span></dt>
+			<dd><input name="spaccinc_activitypub_setdomain" type="text" placeholder="{{ SYS_SERVER_NAME }}" value="{{ SPACCINC_ACTIVITYPUB_SETDOMAIN }}" {% if SPACCINC_ACTIVITYPUB_SETDOMAIN != '' %} disabled="disabled" {% endif %} /></dd>
+		</dl>
+		-->
 	</fieldset>
 
 	<fieldset class="submit-buttons">

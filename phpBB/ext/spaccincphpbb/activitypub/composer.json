@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "ActivityPub for phpBB",
 	"homepage": "https://gitlab.com/SpaccInc/SpaccCommunityPlatform",
-	"version": "0.0.2-dev",
-	"time": "2023-09-09",
+	"version": "0.0.2",
+	"time": "2023-09-13",
 	"license": "[to be defined]",
 	"authors": [
 		{
